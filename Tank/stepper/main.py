@@ -10,6 +10,7 @@ import json
 import hashlib
 import logging
 import re
+from uuid import uuid4
 
 
 class AmmoFactory(object):
@@ -58,6 +59,7 @@ class Stepper(object):
 
     def write(self, f):
         for missile in self.ammo:
+            missle = missle.replace('UUID-UUID-UUID', uuid4().hex)
             f.write(missile)
             try:
                 info.status.inc_ammo_count()
